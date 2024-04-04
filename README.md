@@ -31,8 +31,7 @@ allure serve allure_results
 
 test_courier_creation.py: Тесты для создания курьеров.
 
-test_create_courier_answer_201_and_ok: курьера можно создать и запрос возвращает правильный код ответа.
-test_create_courier_answer_ok_true: успешный запрос возвращает {"ok":true}.
+test_create_courier_answer_correct_response_code: курьера можно создать и запрос возвращает правильный код ответа.
 test_create_courier_double: нельзя создать двух одинаковых курьеров.
 test_create_courier_missing_login: отсутствует поле login.
 test_create_courier_missing_password: отсутствует поле password.

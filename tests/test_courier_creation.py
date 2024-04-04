@@ -12,26 +12,8 @@ class TestCourierCreation:
     first_name = "Anton"
 
 
-    @allure.title("Test Create Courier: Answer 201 and OK")
-    def test_create_courier_answer_201_and_ok(self, api_client):
-        new_courier_info = register_new_courier_and_return_login_password()
-        login, password, first_name = new_courier_info[0][:-1], new_courier_info[1], new_courier_info[2]
-
-        response = api_client.create_courier(login, password, first_name)
-        assert response.status_code == 201 and response.json()["ok"]
-
-        get_id_data = {
-            "login": login,
-            "password": password
-        }
-        get_id_response = requests.post(GET_LOGIN_URL, json=get_id_data)
-
-        courier_id = get_id_response.json().get("id")
-
-        delete_response = api_client.delete_courier(courier_id)
-
-    @allure.title("Test Create Courier: Answer OK True")
-    def test_create_courier_answer_ok_true(self, api_client):
+    @allure.title("Test Create Courier: Answer correct response code")
+    def test_create_courier_answer_correct_response_code(self, api_client):
         new_courier_info = register_new_courier_and_return_login_password()
         login, password, first_name = new_courier_info[0][:-1], new_courier_info[1], new_courier_info[2]
 
