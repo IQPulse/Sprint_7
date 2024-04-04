@@ -5,10 +5,9 @@ import allure
 @allure.story("Проверка создания заказов")
 class TestOrderCreation:
 
-    @pytest.mark.parametrize("color", [["BLACK"], ["GREY"], ["BLACK", "GREY"], []])
-    @allure.title("Test creating order with different colors")
-    def test_create_order(self, api_client, color):
-        order_data = {
+    @pytest.fixture(scope="class")
+    def order_data(self):
+        return {
             "firstName": "Anton",
             "lastName": "Nazarov",
             "address": "Moscow, 1",
@@ -16,9 +15,13 @@ class TestOrderCreation:
             "phone": "+7 800 100 20 30",
             "rentTime": 5,
             "deliveryDate": "2024-04-08",
-            "comment": "Go faster",
-            "color": color
+            "comment": "Go faster"
         }
+
+    @pytest.mark.parametrize("color", [["BLACK"], ["GREY"], ["BLACK", "GREY"], []])
+    @allure.title("Test creating order with different colors")
+    def test_create_order(self, api_client, order_data, color):
+        order_data["color"] = color
 
         with allure.step(f"Create order with color: {color}"):
             response = api_client.create_order(order_data)
