@@ -1,7 +1,8 @@
 import pytest
-from api.api_client import APIClient
 import allure
 
+@allure.feature("Order Creation")
+@allure.story("Проверка создания заказов")
 class TestOrderCreation:
 
     @pytest.fixture(scope="class")
@@ -18,8 +19,6 @@ class TestOrderCreation:
         }
 
     @pytest.mark.parametrize("color", [["BLACK"], ["GREY"], ["BLACK", "GREY"], []])
-    @allure.feature("Order Creation")
-    @allure.story("Create Order")
     @allure.title("Test creating order with different colors")
     def test_create_order(self, api_client, order_data, color):
         order_data["color"] = color
@@ -28,4 +27,3 @@ class TestOrderCreation:
             response = api_client.create_order(order_data)
             assert response.status_code == 201, f"Failed to create order with color {color}. Response: {response.text}"
             assert "track" in response.json(), f"No tracking number found in response: {response.json()}"
-

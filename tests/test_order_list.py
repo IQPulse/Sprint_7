@@ -2,6 +2,8 @@ import pytest
 import allure
 
 
+@allure.feature("Order List")
+@allure.story("Проверка списка заказов")
 class TestOrderList:
 
     @pytest.fixture(scope="class")
@@ -10,8 +12,6 @@ class TestOrderList:
                 "rentTime", "deliveryDate", "track", "color", "comment", "createdAt",
                 "updatedAt", "status"]
 
-    @allure.feature("Order List")
-    @allure.story("Retrieving Orders")
     @allure.title("Check presence of required fields in orders")
     def test_get_orders(self, api_client, required_fields):
         with allure.step("Send request to retrieve orders"):
