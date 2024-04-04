@@ -1,12 +1,8 @@
 import pytest
-from api.api_client import APIClient
 import allure
 
 
 class TestOrderList:
-    @pytest.fixture(scope="class")
-    def api_client(self):
-        return APIClient()
 
     @pytest.fixture(scope="class")
     def required_fields(self):

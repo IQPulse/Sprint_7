@@ -1,5 +1,3 @@
-import pytest
-from api.api_client import APIClient
 from utils.helpers import register_new_courier_and_return_login_password
 import allure
 
@@ -11,10 +9,6 @@ class TestCourierLogin:
     password = "qw123!"
     password_error = "qw123!ZXC"
     first_name = "Anton"
-
-    @pytest.fixture(scope="class")
-    def api_client(self):
-        return APIClient()
 
     @allure.feature("Courier Login")
     @allure.story("Successful Login")

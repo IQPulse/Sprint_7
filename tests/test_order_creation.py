@@ -3,9 +3,6 @@ from api.api_client import APIClient
 import allure
 
 class TestOrderCreation:
-    @pytest.fixture(scope="class")
-    def api_client(self):
-        return APIClient()
 
     @pytest.fixture(scope="class")
     def order_data(self):
