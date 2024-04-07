@@ -64,10 +64,9 @@ class TestCourierCreation:
 
     @allure.title("Test Create Courier: Missing Password")
     def test_create_courier_missing_password(self, api_client):
-        login = self.login_existing
 
         payload = {
-            "login": login,
+            "login": self.login_existing,
             "firstName": self.first_name
         }
         response = api_client.create_courier_without_login_or_password(payload)
