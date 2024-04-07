@@ -42,14 +42,13 @@ class TestCourierCreation:
         expected_message = "Этот логин уже используется. Попробуйте другой."
         assert response2.status_code == 409 and expected_message in response2.json()["message"]
 
-        if response1.status_code == 201:
-            get_id_data = {
-                "login": login,
-                "password": password
-            }
-            get_id_response = requests.post(GET_LOGIN_URL, json=get_id_data)
-            courier_id = get_id_response.json().get("id")
-            delete_response = api_client.delete_courier(courier_id)
+        get_id_data = {
+            "login": login,
+            "password": password
+        }
+        get_id_response = requests.post(GET_LOGIN_URL, json=get_id_data)
+        courier_id = get_id_response.json().get("id")
+        delete_response = api_client.delete_courier(courier_id)
 
     @allure.title("Test Create Courier: Missing Login")
     def test_create_courier_missing_login(self, api_client):
