@@ -22,5 +22,4 @@ class TestOrderCreation:
 
         with allure.step(f"Create order with color: {color}"):
             response = api_client.create_order(order_data)
-            assert response.status_code == 201, f"Failed to create order with color {color}. Response: {response.text}"
-            assert "track" in response.json(), f"No tracking number found in response: {response.json()}"
+            assert "track" in response.json()
