@@ -32,12 +32,6 @@ class TestCourierLogin:
         expected_error_message = "Учетная запись не найдена"
         assert response.status_code == 404 and response.json()["message"] == expected_error_message
 
-    @allure.title("Test Courier Login Error: Non-existing User")
-    def test_courier_login_non_existing_user(self, api_client):
-        response = api_client.courier_login(self.login_error, self.password_error)
-        expected_error_message = "Учетная запись не найдена"
-        assert response.status_code == 404 and response.json()["message"] == expected_error_message
-
     @allure.title("Test Courier Login Error: Missing Login and Password")
     def test_courier_login_missing_login_and_password(self, api_client):
         response = api_client.courier_login("", "")

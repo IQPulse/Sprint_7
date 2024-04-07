@@ -44,7 +44,6 @@ test_courier_login_error_password: ошибка в поле password.
 test_courier_login_missing_login_and_password: нет поля login_and_password.
 test_courier_login_missing_login: нет поля login.
 test_courier_login_missing_password: нет поля password.
-test_courier_login_non_existing_user: если авторизоваться под несуществующим пользователем, запрос возвращает ошибку.
 test_order_creation.py: Тесты для создания заказов.
 
 test_create_order: тестируем все варианты цветов заказа.
